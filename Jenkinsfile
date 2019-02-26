@@ -1,14 +1,23 @@
 pipeline {
   agent any
+  
   stages {
-    stage('compile') {
+    stage('compile stage') {
       steps {
-        build(job: 'compile', quietPeriod: -5)
+        withmaven(maven: ){
+          sh 'mvn clean compile'
+        }  
       }
-    stage('test') {
+    } 
+    
+    stage('testing stage') {
       steps {
-        build(job: 'test', quietPeriod: -5)
-      }
+        withmaven(maven: ){
+          sh 'mvn test'
+        }
     }
+  
   }
+
+
 }
