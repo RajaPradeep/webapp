@@ -1,3 +1,0 @@
-welcome to the configuration of Git and GitHub, now we are making changes to the repository to check the status of the repo.
-
-
