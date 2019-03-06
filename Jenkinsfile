@@ -2,22 +2,19 @@ pipeline {
   agent any
   
   stages {
-    stage('compile stage') {
-      steps {
-        withmaven(maven: 'mavenjenkins'){
-          sh 'mvn clean compile'
-        }  
-      }
-    } 
-    
-    stage('testing stage') {
-      steps {
-        withmaven(maven: 'mavenjenkins'){
-          sh 'mvn test'
-        }
+    stage('github checkout') {
+        git 'https://github.com/RajaPradeep/webapp.git'
     }
-  
-  }
-
-
+    stage('packing stage') {
+      steps {
+        withmaven(maven: 'maven_3.6'){
+          sh 'mvn clean package'
+        }  
+    }
+      
+    
+    
+    
+    
+    } 
 }
