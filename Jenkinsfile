@@ -1,20 +1,11 @@
-pipeline {
-  agent any
-  
-  stages {
-    stage('github checkout') {
-        git 'https://github.com/RajaPradeep/webapp.git'
+node{
+    stage('SCM Checkout'){
+        git url:''
     }
-    stage('packing stage') {
-      steps {
-        withmaven(maven: 'maven_3.6'){
-          sh 'mvn clean package'
-        }  
+    stage('MVN Package'){
+        def mvnHome = tool name: 'maven_3.6', type: 'maven'
+        def mvnCMD = "${mvnHome}/bin/mvn"
+        sh "${mvnCMD} clean package"
     }
-      
     
-    
-    
-    
-    } 
 }
