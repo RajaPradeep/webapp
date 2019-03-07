@@ -1,6 +1,6 @@
 node{
     stage('SCM Checkout'){
-        git url:'https://github.com/RajaPradeep/webapp/edit/master/Jenkinsfile'
+        git url:'https://github.com/RajaPradeep/webapp.git'
     }
     stage('MVN Package'){
         def mvnHome = tool name: 'maven_3.6', type: 'maven'
