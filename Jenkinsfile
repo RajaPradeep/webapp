@@ -7,11 +7,11 @@ node{
         def mvnCMD = "${mvnHome}/bin/mvn"
         sh "${mvnCMD} clean package"
     }
-//    stage('ssh into local machine'){
-//        def remScript = "./home/ec2-user/remote_exec.sh"
-//        sh "ssh -o StrictHostKeyChecking=no -i  /myprivkeyec2dynamo.pem ec2-user@172.31.81.16 && ${remScript}" 
-//    }
+ 
     stage('Deploy'){
-          sh "./deploy_tomcat.sh"   
+	    def dockerRun = '/home/ec2-user/deploy_tomcat.sh'
+	    sshagent(['15e5ae04-30fa-4b6d-b8ef-056ab51688e0']) {
+        sh "ssh -o StrictHostKeyChecking=no ec2-user@172.31.81.16 ${dockerRun}"
+        }             
     }
 }
