@@ -12,6 +12,6 @@ node{
 //        sh "ssh -o StrictHostKeyChecking=no -i  /myprivkeyec2dynamo.pem ec2-user@172.31.81.16 && ${remScript}" 
 //    }
     stage('Deploy'){
-        
+          sh "./deploy_tomcat.sh"   
     }
 }
